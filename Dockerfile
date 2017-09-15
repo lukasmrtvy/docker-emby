@@ -2,8 +2,9 @@ FROM alpine:latest
 
 ENV EMBY_VERSION 3.2.30.0
 
-ARG UID 1111
-ARG USER htpc
+ENV UID 1000
+ENV USER htpc
+ENV GROUP htpc
 
 RUN addgroup -S ${GROUP} && adduser -D -S -u ${UID} ${USER} ${GROUP} && \
     echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \ 
