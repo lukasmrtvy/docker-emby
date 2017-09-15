@@ -15,4 +15,6 @@ RUN mkdir -p /opt/emby && cd /tmp/ && wget "https://github.com/MediaBrowser/Emby
     
 LABEL version=${EMBY_VERSION}
 
+USER ${USER}
+
 CMD mono /opt/emby/MediaBrowser.Server.Mono.exe
