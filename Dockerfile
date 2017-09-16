@@ -15,7 +15,7 @@ RUN mkdir -p /opt/emby && cd /tmp/ && wget "https://github.com/MediaBrowser/Emby
     unzip /tmp/Emby.Mono.zip -d /opt/emby
     
 LABEL version=${EMBY_VERSION}
-LABEL url=https://github.com/MediaBrowser/Emby
+LABEL url=https://api.github.com/repos/MediaBrowser/Emby/releases/latest
 
 USER ${USER}
 
