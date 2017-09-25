@@ -14,6 +14,7 @@ RUN addgroup -S ${GROUP} && adduser -D -S -u ${UID} ${USER} ${GROUP} && \
 RUN mkdir -p /opt/emby && cd /tmp/ && wget "https://github.com/MediaBrowser/Emby/releases/download/${EMBY_VERSION}/Emby.Mono.zip" && \
     unzip /tmp/Emby.Mono.zip -d /opt/emby
     
+LABEL name=Emby
 LABEL version=${EMBY_VERSION}
 LABEL url=https://api.github.com/repos/MediaBrowser/Emby/releases/latest
 
