@@ -9,11 +9,13 @@ ENV GROUP htpc
 RUN addgroup -S ${GROUP} && adduser -D -S -u ${UID} ${USER} ${GROUP} && \
     echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \ 
     apk -U upgrade && \
-    apk -U add --no-cache sqlite-dev ffmpeg unzip mono@testing wget ca-certificates
+    apk -U add --no-cache sqlite-dev ffmpeg unzip mono@testing wget ca-certificates && \ 
+    mkdir -p /opt/emby && cd /tmp/ && wget "https://github.com/MediaBrowser/Emby/releases/download/${EMBY_VERSION}/Emby.Mono.zip" && \
+    unzip /tmp/Emby.Mono.zip -d /opt/emby && \ 
+    rm -rf /tmp/*
 
-RUN mkdir -p /opt/emby && cd /tmp/ && wget "https://github.com/MediaBrowser/Emby/releases/download/${EMBY_VERSION}/Emby.Mono.zip" && \
-    unzip /tmp/Emby.Mono.zip -d /opt/emby
-    
+EXPOSE 8096
+
 LABEL name=Emby
 LABEL version=${EMBY_VERSION}
 LABEL url=https://api.github.com/repos/MediaBrowser/Emby/releases/latest
