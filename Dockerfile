@@ -16,15 +16,13 @@ RUN addgroup -S ${GROUP} -g ${GID} && adduser -D -S -u ${UID} ${USER} ${GROUP}  
     chown -R ${USER}:${GROUP} /opt/emby && \
     rm -rf /tmp/*
 
-WORKDIR /opt/
-
 EXPOSE 8096
 
-#VOLUME ?
+VOLUME  /opt/emby/ProgramData-Server/config/ 
 
 LABEL version=${EMBY_VERSION}
 LABEL url=https://api.github.com/repos/MediaBrowser/Emby/releases/latest
 
 USER ${USER}
 
-ENTRYPOINT ["mono", "/emby/MediaBrowser.Server.Mono.exe"]
+ENTRYPOINT ["mono", "/opt/emby/MediaBrowser.Server.Mono.exe"]
