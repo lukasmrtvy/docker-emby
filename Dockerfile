@@ -11,7 +11,7 @@ ENV EMBY_VERSION 3.2.30.0
 RUN addgroup -S ${GROUP} -g ${GID} && adduser -D -S -u ${UID} ${USER} ${GROUP}  && \
     echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \ 
     apk -U add --no-cache sqlite-dev ffmpeg unzip mono@testing wget ca-certificates && \ 
-    mkdir -p /opt/emby && cd /tmp/ && wget -q "https://github.com/MediaBrowser/Emby/releases/download/${EMBY_VERSION}/Emby.Mono.zip" && \
+    mkdir -p /opt/emby/ProgramData-Server/ && cd /tmp/ && wget -q "https://github.com/MediaBrowser/Emby/releases/download/${EMBY_VERSION}/Emby.Mono.zip" && \
     unzip /tmp/Emby.Mono.zip -d /opt/emby && \
     chown -R ${USER}:${GROUP} /opt/emby && \
     rm -rf /tmp/*
