@@ -7,13 +7,13 @@ ENV GROUP htpc
 
 ENV EMBY_VERSION 3.2.30.0
 
-
 RUN addgroup -S ${GROUP} -g ${GID} && adduser -D -S -u ${UID} ${USER} ${GROUP}  && \
     echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \ 
-    apk -U add --no-cache sqlite-dev ffmpeg unzip mono@testing wget ca-certificates && \ 
+    apk -U add --no-cache sqlite-dev ffmpeg unzip mono@testing wget ca-certificates tzdata && \ 
     mkdir -p /opt/emby/ProgramData-Server/ && cd /tmp/ && wget -q "https://github.com/MediaBrowser/Emby/releases/download/${EMBY_VERSION}/Emby.Mono.zip" && \
     unzip /tmp/Emby.Mono.zip -d /opt/emby && \
     chown -R ${USER}:${GROUP} /opt/emby && \
+    apk del unzip wget && \
     rm -rf /tmp/*
 
 EXPOSE 8096
