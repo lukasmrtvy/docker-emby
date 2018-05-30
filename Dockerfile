@@ -21,7 +21,7 @@ EXPOSE 8096
 VOLUME  /opt/emby/ProgramData-Server/
 
 LABEL version=${EMBY_VERSION}
-LABEL url=https://api.github.com/repos/MediaBrowser/Emby/releases/latest
+LABEL url=https://github.com/MediaBrowser/Emby/
 
 USER ${USER}
 
